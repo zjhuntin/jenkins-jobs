@@ -1,0 +1,12 @@
+- job:
+    name: katello-pulpcore-integration-pipeline
+    project-type: pipeline
+    sandbox: true
+    triggers:
+      - timed: 'H 02 * * *'
+    dsl:
+      !include-raw:
+        - 'pipelines/test/katello-pulpcore-integration.groovy{empty}'
+        - 'pipelines/lib/rvm.groovy{empty}'
+        - 'pipelines/lib/ansible.groovy{empty}'
+        - 'pipelines/lib/foreman_infra.groovy{empty}'
