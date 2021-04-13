@@ -1,3 +1,10 @@
+def pipelines = [
+    'katello_devel': [
+        'centos7',
+        'centos8'
+    ]
+]
+
 pipeline {
     agent none
 
