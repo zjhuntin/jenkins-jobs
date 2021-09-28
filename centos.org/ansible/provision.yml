@@ -6,7 +6,7 @@
         action: get
         retry_count: 5
       register: cico_get_data
-      retry: 2
+      retries: 2
       delay: 310
       until: cico_get_data.results is defined
 
