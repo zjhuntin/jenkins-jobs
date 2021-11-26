@@ -16,6 +16,7 @@ def foreman_debian_releases = ['buster', 'bullseye', 'focal']
 def pipelines_deb = [
     'install': [
         'debian10',
+        'debian11',
         'ubuntu2004'
     ],
     'upgrade': [
