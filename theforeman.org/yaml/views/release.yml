@@ -1,0 +1,22 @@
+- view-template:
+    name: 'Foreman {major}.{minor}'
+    description: 'Foreman {major}.{minor} jobs'
+    view-type: list
+    regex: '.*{major}[_\.]{minor}.*'
+
+- project:
+    name: 'foreman-releases'
+    views:
+        - 'Foreman {major}.{minor}'
+    major:
+        - '3'
+    minor:
+        - '0'
+        - '1'
+        - '2'
+
+- view:
+    name: 'Foreman Nightly'
+    description: 'Foreman nightly jobs'
+    view-type: list
+    regex: '.+-((nightly|plugins)-(rpm|deb)-pipeline|(develop|master|source|package)-(test|release))'
