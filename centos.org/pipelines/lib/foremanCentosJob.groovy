@@ -19,7 +19,7 @@ pipeline {
                 deleteDir()
                 git url: 'https://github.com/theforeman/forklift.git'
 
-                sh(label: 'pip install', script: 'pip3.8 install opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp python-cicoclient')
+                sh(label: 'pip install', script: 'pip3.8 install --user opentelemetry-api opentelemetry-sdk opentelemetry-exporter-otlp python-cicoclient')
             }
         }
         stage('Provision Node') {
