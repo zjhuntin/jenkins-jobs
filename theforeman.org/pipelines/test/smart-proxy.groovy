@@ -80,6 +80,13 @@ pipeline {
                         }
                     }
                     stage('Run Tests') {
+                        environment {
+                            // ci_reporters gem
+                            CI_REPORTS = 'jenkins/reports/unit'
+                            // minitest-reporters
+                            MINITEST_REPORTER = 'JUnitReporter'
+                            MINITEST_REPORTERS_REPORTS_DIR = 'jenkins/reports/unit'
+                        }
                         steps {
                             withRVM(['bundle exec rake jenkins:unit'], ruby)
                         }
