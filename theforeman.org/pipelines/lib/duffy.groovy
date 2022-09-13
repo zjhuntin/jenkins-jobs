@@ -15,7 +15,6 @@ def provisionDuffy() {
 
   	dir('jenkins-jobs/centos.org/ansible') {
         runPlaybook(playbook: 'provision_duffy.yml')
-        archiveArtifacts artifacts: 'duffy_inventory'
         archiveArtifacts artifacts: 'ssh_config'
     }
 }
@@ -34,7 +33,7 @@ def deprovisionDuffy() {
 }
 
 def duffy_inventory(relative_dir = '') {
-    return relative_dir + 'jenkins-jobs/centos.org/ansible/duffy_inventory'
+    return relative_dir + 'jenkins-jobs/centos.org/ansible/foreman.duffy.yml'
 }
 
 def ssh_config(relative_dir = '') {
