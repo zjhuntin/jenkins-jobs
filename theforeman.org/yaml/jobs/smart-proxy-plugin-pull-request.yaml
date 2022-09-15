@@ -40,7 +40,6 @@
     name: smart-proxy-plugin-pull-request
     plugin:
       - ansible
-      - dhcp_infoblox
       - discovery
       - dynflow
       - monitoring
