@@ -14,6 +14,7 @@ pipeline {
                 git_clone_foreman_infra()
                 sshagent(['puppet-deploy']) {
                     sh 'ssh -p 8122 deploypuppet@puppetmaster.theforeman.org'
+                    sh 'ssh deploypuppet@puppet.theforeman.org'
                 }
             }
         }
