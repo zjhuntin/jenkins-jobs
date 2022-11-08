@@ -1,4 +1,4 @@
-def foreman_version = 'nightly'
+def foreman_version = '3.5'
 def foreman_client_distros = [
     'el9',
     'el8',
