@@ -21,6 +21,7 @@
     plugin:
       - dhcp_infoblox
       - dhcp_remote_isc
+      - discovery
       - dns_infoblox
       - monitoring
       - pulp

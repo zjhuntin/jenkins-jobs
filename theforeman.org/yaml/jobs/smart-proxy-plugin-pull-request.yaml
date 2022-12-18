@@ -39,7 +39,6 @@
     name: smart-proxy-plugin-pull-request
     plugin:
       - ansible
-      - discovery
       - dynflow
       - omaha
       - openscap
