@@ -41,7 +41,6 @@
       - ansible
       - discovery
       - dynflow
-      - monitoring
       - omaha
       - openscap
       - remote_execution_ssh
