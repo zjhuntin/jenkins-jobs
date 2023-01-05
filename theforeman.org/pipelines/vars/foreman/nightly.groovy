@@ -1,4 +1,5 @@
 def foreman_version = 'nightly'
+def git_branch = "develop"
 def foreman_client_distros = [
     'el9',
     'el8',

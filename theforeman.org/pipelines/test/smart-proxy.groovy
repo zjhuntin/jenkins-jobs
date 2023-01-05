@@ -1,3 +1,11 @@
+def git_checkout = {
+    if (env.ghprbPullId) {
+        ghprb_git_checkout()
+    } else {
+        git branch: "${params.BRANCH}", url: 'https://github.com/theforeman/smart-proxy'
+    }
+}
+
 pipeline {
     agent none
     options {
@@ -19,7 +27,9 @@ pipeline {
             stages {
                 stage('Setup Git Repos') {
                     steps {
-                        ghprb_git_checkout()
+                        script {
+                            git_checkout()
+                        }
                     }
                 }
                 stage('Setup RVM') {
@@ -66,7 +76,9 @@ pipeline {
                 stages {
                     stage('Setup Git Repos') {
                         steps {
-                            ghprb_git_checkout()
+                            script {
+                                git_checkout()
+                            }
                         }
                     }
                     stage('Setup RVM') {

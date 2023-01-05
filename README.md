@@ -25,6 +25,7 @@ Useful resources:
 | Nightly Package Builder | {git-repo}-{git-branch}-package-release                | foreman-develop-package-release | hammer-cli-katello-master-package-release |
 | CI pipeline             | {repository}-{environment}-{optional-concern}-pipeline | foreman-nightly-rpm-pipeline    | foreman-nightly-deb-pipeline              |
 | Pull Request testing    | {git-repo}-{optional-concern}-pr-test                  | katello-pr-test                 | foreman-packaging-rpm-pr-test             |
+| Branch testing          | {git-repo}-{git-branch}-test                           | foreman-3.5-stable-test         | smart-proxy-3.5-stable-test               |
 
 ## Job configurations
 
