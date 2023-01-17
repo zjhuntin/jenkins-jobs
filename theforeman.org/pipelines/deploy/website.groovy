@@ -9,7 +9,7 @@ pipeline {
     }
 
     environment {
-        ruby_version = '2.5'
+        ruby_version = '2.7'
         // Sync to the pivot-point on the web node
         target_path = 'website@web01.osuosl.theforeman.org:rsync_cache/'
         rsync_log = 'deploy-website.log'
