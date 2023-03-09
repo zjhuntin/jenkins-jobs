@@ -23,13 +23,6 @@ bundle install --without=development --jobs=5 --retry=5
 # Rubocop
 bundle exec rake rubocop
 
-# setup UI testing
-
-if [ "$database" = 'postgresql-integrations' ]; then
-  export database='postgresql'
-  export UI="true"
-fi
-
 # Database environment
 (
   sed "s/^test:/development:/; s/database:.*/database: ${gemset}-dev/" $HOME/${database}.db.yaml
@@ -39,23 +32,17 @@ fi
   sed "s/database:.*/database: ${gemset}-test/" $HOME/${database}.db.yaml
 ) > $APP_ROOT/config/database.yml
 
-# we need to install node modules for integration tests (which only run on postgresql)
-if [ "${UI}" = "true" ]; then
-  npm install --no-audit
-fi
+# we need to install node modules for integration tests
+npm install --no-audit
 
 # Create DB first in development as migrate behaviour can change
 bundle exec rake db:drop >/dev/null 2>/dev/null || true
 bundle exec rake db:create db:migrate --trace
 
-tasks="pkg:generate_source jenkins:unit"
-[ "${UI}" = "true" ] && tasks="jenkins:integration"
-bundle exec rake $tasks TESTOPTS="-v" --trace
+bundle exec rake pkg:generate_source jenkins:unit jenkins:integration TESTOPTS="-v" --trace
 
 # Test asset precompile
-if [ "${UI}" = "true" ]; then
-  rm -f db/schema.rb
-  cp db/schema.rb.nulldb db/schema.rb
-  bundle exec rake assets:precompile RAILS_ENV=production DATABASE_URL=nulldb://nohost
-  bundle exec rake webpack:compile RAILS_ENV=production DATABASE_URL=nulldb://nohost
-fi
+rm -f db/schema.rb
+cp db/schema.rb.nulldb db/schema.rb
+bundle exec rake assets:precompile RAILS_ENV=production DATABASE_URL=nulldb://nohost
+bundle exec rake webpack:compile RAILS_ENV=production DATABASE_URL=nulldb://nohost
