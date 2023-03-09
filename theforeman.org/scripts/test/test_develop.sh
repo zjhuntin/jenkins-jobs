@@ -25,11 +25,11 @@ bundle exec rake rubocop
 
 # Database environment
 (
-  sed "s/^test:/development:/; s/database:.*/database: ${gemset}-dev/" $HOME/${database}.db.yaml
+  sed "s/^test:/development:/; s/database:.*/database: ${gemset}-dev/" $HOME/postgresql.db.yaml
   echo
-  sed "s/^test:/production:/; s/database:.*/database: ${gemset}-prod/" $HOME/${database}.db.yaml
+  sed "s/^test:/production:/; s/database:.*/database: ${gemset}-prod/" $HOME/postgresql.db.yaml
   echo
-  sed "s/database:.*/database: ${gemset}-test/" $HOME/${database}.db.yaml
+  sed "s/database:.*/database: ${gemset}-test/" $HOME/postgresql.db.yaml
 ) > $APP_ROOT/config/database.yml
 
 # we need to install node modules for integration tests

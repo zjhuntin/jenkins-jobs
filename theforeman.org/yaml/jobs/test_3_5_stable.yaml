@@ -17,11 +17,6 @@
           values:
             - 2.7
       - axis:
-          type: user-defined
-          name: database
-          values:
-            - postgresql
-      - axis:
           type: label-expression
           name: slave
           values:

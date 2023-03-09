@@ -23,10 +23,6 @@
           name: foreman_branch
           default: develop
           description: "Git branch name of Foreman itself, e.g. <pre>develop</pre>"
-      - string:
-          name: dbs
-          default: 'postgresql'
-          description: "Databases to test against"
     concurrent: true
     scm:
       - git:
@@ -42,11 +38,6 @@
           name: ruby
           values:
             - 2.7
-      - axis:
-          type: dynamic
-          name: database
-          values:
-            - dbs
       - axis:
           type: label-expression
           name: slave

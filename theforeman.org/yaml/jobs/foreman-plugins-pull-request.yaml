@@ -24,11 +24,6 @@
           values:
             - '2.7'
       - axis:
-          type: user-defined
-          name: database
-          values:
-            - postgresql
-      - axis:
           type: slave
           name: label
           values:

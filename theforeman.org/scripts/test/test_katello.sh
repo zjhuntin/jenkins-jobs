@@ -50,9 +50,9 @@ bundle update --jobs=5 --retry=5
 
 # Database environment
 (
-  sed "s/^test:/development:/; s/database:.*/database: ${gemset}-dev/" $HOME/${database}.db.yaml
+  sed "s/^test:/development:/; s/database:.*/database: ${gemset}-dev/" $HOME/postgresql.db.yaml
   echo
-  sed "s/database:.*/database: ${gemset}-test/" $HOME/${database}.db.yaml
+  sed "s/database:.*/database: ${gemset}-test/" $HOME/postgresql.db.yaml
 ) > $APP_ROOT/config/database.yml
 
 # First try to drop the DB, but ignore failure as it might happen with Rails 5

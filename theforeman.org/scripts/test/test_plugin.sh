@@ -29,9 +29,9 @@ bundle install --without=development --jobs=5 --retry=5
 
 # Database environment
 (
-  sed "s/^test:/development:/; s/database:.*/database: ${gemset}-dev/" $HOME/${database}.db.yaml
+  sed "s/^test:/development:/; s/database:.*/database: ${gemset}-dev/" $HOME/postgresql.db.yaml
   echo
-  sed "s/database:.*/database: ${gemset}-test/" $HOME/${database}.db.yaml
+  sed "s/database:.*/database: ${gemset}-test/" $HOME/postgresql.db.yaml
 ) > $APP_ROOT/config/database.yml
 
 # Create DB first in development as migrate behaviour can change
@@ -62,12 +62,12 @@ tasks="jenkins:unit"
 
 # If the plugin contains integration tests or triggers core integration tests,
 # we need to install node modules and compile webpack
-if [ -d "${PLUGIN_ROOT}/test/integration" ] || [ ${database} = postgresql ]; then
+if [ -d "${PLUGIN_ROOT}/test/integration" ] ; then
   npm install --no-audit
   tasks="webpack:compile $tasks"
 fi
 
-[ ${database} = postgresql ] && tasks="$tasks jenkins:integration"
+tasks="$tasks jenkins:integration"
 bundle exec rake $tasks TESTOPTS="-v" --trace
 
 # Run the DB seeds to verify they work
