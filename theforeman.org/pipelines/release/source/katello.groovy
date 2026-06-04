@@ -61,9 +61,7 @@ pipeline {
                 }
                 stage('rubocop') {
                     steps {
-                        dir('foreman') {
-                            bundleExec(ruby, "rubocop --parallel ../${project_name}")
-                        }
+                        bundleExec(ruby, 'rubocop --parallel', 'foreman/Gemfile')
                     }
                 }
                 stage('react-ui') {
