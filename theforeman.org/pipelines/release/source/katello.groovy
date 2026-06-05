@@ -60,8 +60,12 @@ pipeline {
                     }
                 }
                 stage('rubocop') {
+                    environment {
+                        BUNDLE_PATH = "${env.WORKSPACE}/.rubocop_bundle"
+                    }
                     steps {
-                        bundleExec(ruby, 'rubocop --parallel', 'foreman/Gemfile')
+                        bundleInstall(ruby)
+                        bundleExec(ruby, 'rubocop --parallel')
                     }
                 }
                 stage('react-ui') {
