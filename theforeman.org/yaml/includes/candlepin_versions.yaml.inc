@@ -1,5 +1,4 @@
-- 'nightly-el9'
-- 'nightly-el10'
+- 'nightly'
 - '4.6'
 - '4.7'
 - '4.8'

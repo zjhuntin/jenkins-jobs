@@ -11,6 +11,6 @@
       - '4.7'
       - '4.8'
       - '5.0'
-      - nightly-el9
+      - nightly
     type:
       - candlepin
